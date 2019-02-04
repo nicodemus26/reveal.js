@@ -24,8 +24,115 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section><h1>A Whirlwind Tour Of Web Cryptography</h1></section>
+				<section><img data-src="google_search.png"></section>
+				<section><h2>Three tools</h2>
+                                <ul><li>Symmetric</li><li>Asymmetric</li><li>Hash</li></ul>
+                                </section>
+				<section><h2>Symmetric</h2>
+<p>Bi-directional keys</p>
+<p>🔓 + 🔑 ➡ 🔒</p>
+<p>🔒 + 🔑 ➡ 🔓</p>
+                                </section>
+				<section><h2>Asymmetric</h2>
+<p>Public and private keys</p>
+<p>🔓 + 📢 ➡ 🔒</p>
+<p>🔒 + 🤐 ➡ 🔓</p>
+                                </section>
+				<section><h2>Hash</h2>
+<p>One-directional function</p>
+<p>📜 ➡ c0ff33</p>
+                                </section>
+				<section><h2>Putting things together</h2>
+                                <ul><li>Signatures</li><li>Certificates</li><li>Tunnels</li></ul>
+                                </section>
+				<section><h2>Signatures</h2>
+<p>Hashes + Asymmetric</p>
+<p>Unforgeable, publicly verifiable</p>
+<p>c0ff33 + 🤐 ➡ ✍️ </p>
+<p>✍️  + 📢 ➡ ✔️ </p>
+                                </section>
+				<section><h2>Certificates</h2>
+<p>Signatures + Public Keys + Metadata</p>
+<p>✍️  + 🏛️🤐 ➡ 📝 </p>
+<p>📝 + 📢 ➡ 🏛️✔️ </p>
+                                </section>
+				<section><h2>Tunnels</h2>
+<p>Asymmetric + Symmetric</p>
+<p>🔑 + 📢 ➡ 🔒</p>
+                                </section>
+				<section><h2>Perfect Forward Secrecy</h2>
+<p>DHKE - Diffie-Hellman Key Exchange</p>
+<p>Ephemeral Session Key Negotiation</p>
+<p>An exercize!</p>
+                                </section>
+				<section><h2>Web of Trust</h2>
+<p>Certificates are directed edges</p>
+<p>If there is a path, you can trust transitively</p>
+<p>Anyone can participate</p>
+                                </section>
+				<section><h2>X.509</h2>
+<p>Trees of Trust</p>
+<p>Certificate Authorities</p>
+<ul><li>Root</li><li>Intermediate</li></ul>
+<p>https://www.eff.org/files/colour_map_of_cas.pdf</p>
+                                </section>
+				<section><h2>🌩️ CA Private Key Compromised</h2>
+<p>Trust Sub-tree Compromised</p>
+<p>Mitigated by:</p>
+<ul><li>CRLs</li><li>Expiration</li><li>Patching</li></ul>
+<p>Examples:</p>
+<ul>
+<li>2011 - DigiNotar and Iranian emails</li>
+<li>https://www.eff.org/observatory</li>
+</ul>
+                                </section>
+				<section><h2>🌩️ Server Private Key Compromised</h2>
+<p>Mitigated by:</p>
+<ul><li>CRLs</li><li>Expiration</li><li>Patching</li></ul>
+<p>Session data compromised</p>
+<ul><li>Perfect Forward Secrecy</li></ul>
+                                </section>
+				<section><h2>🌩️ Malicious CA</h2>
+<p>Allows both eavesdropping and forgery</p>
+<p>Mitigated by:</p>
+<ul>
+<li>Patching</li>
+<li>Cert Pinning</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Lots of managed networks</li>
+<li>2010 - Superfish ad injection</li>
+<li>2019 - "Market Research"?</li>
+</ul>
+                                </section>
+				<section><h2>🌩️ Cipher Weakened</h2>
+<p>Mitigated by:</p>
+<ul>
+<li>Advances in Cryptography</li>
+<li>TLS Cipher Preferences</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Advances in Cryptography</li>
+<li>1999 - DES</li>
+<li>1999 - Short RSA</li>
+<li>2005-2017 - SHA1</li>
+</ul>
+                                </section>
+				<section><h2>🌩️ Quantum Computing</h2>
+<li>Shor's algorithm RSA NP ➡ O(n)</li>
+<p>Mitigated by quantum-hard algorithms</p>
+<p>Perfect Forward Secrecy?</p>
+<ul>
+<li>Grover's algorithm AES O(2^n) ➡ O(2^n/2)</li>
+</ul>
+                                </section>
+				<section><h2>
+Questions?
+</h2>
+<img data-src="google_search.png"></section>
 			</div>
 		</div>
 
@@ -37,6 +144,7 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+                                transition: "convex",
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
